@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Beauty industry revenue by year" },
+    "data": {
+      "url": "https://raw.githubusercontent.com/znxuan/3179-hw10/refs/heads/main/revenue_worldwide.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.Year >= startYear && datum.Year <= endYear"
+      }
+    ],
+    "width": 300,  
+    "height": 308,
+    "layer": [
+      {
+        "mark": "bar",
+        "encoding": {
+          "x": { "field": "Year", "type": "nominal" },
+          "y": { "field": "Revenue ($ bn)", "type": "quantitative" },
+          "tooltip": [
+            { "field": "Year", "type": "nominal", "title": "Year" },
+            { "field": "Revenue ($ bn)", "type": "quantitative", "title": "Revenue ($bn)" }
+          ]
+        }
+      },
+      
+      {
+        "mark": {"type": "rule", "color": "deeppink", "size": 2},
+        "encoding": {
+          "y": {"datum": 500, "type": "quantitative"}  
+        }
+      },
+      
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "dx": 5,
+          "dy": -5,
+          "color": "deeppink"
+        },
+        "encoding": {
+          "y": {"datum": 500, "type": "quantitative"},
+          "text": {"value": "Revenue: 500"}
+        }
+      }
+    ],
+    "params": [
+      {
+        "name": "startYear",
+        "value": 2014, 
+        "bind": {
+          "input": "range",
+          "min": 2014,
+          "max": 2018, 
+          "step": 1,
+          "name": "Start Year: "
+        }
+      },
+      {
+        "name": "endYear",
+        "value": 2023,
+        "bind": {
+          "input": "range",
+          "min": 2018, 
+          "max": 2023,
+          "step": 1,
+          "name": "End Year: "
+        }
+      }
+    ]
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+      
