@@ -6,7 +6,7 @@
       
     },
     "description": "Radar chart with area fill",
-    "width": 350,
+    "width": 400,
     "height": 350,
     "padding": 70,
     "autosize": {"type": "none", "contains": "padding"},
