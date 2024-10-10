@@ -1,75 +1,62 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Beauty industry revenue by year" },
+    "title": { "text": "Beauty Industry Revenue by Year and Sales Channel" },
     "data": {
-      "url": "https://raw.githubusercontent.com/znxuan/3179-hw10/refs/heads/main/revenue_worldwide.csv"
+      "url": "https://raw.githubusercontent.com/znxuan/data_viz_vegalite/refs/heads/main/sales_channel.csv"
     },
     "transform": [
       {
-        "filter": "datum.Year >= startYear && datum.Year <= endYear"
+        "fold": ["Offline", "Online"],  
+        "as": ["Sales Channel", "value"]
+      },
+      {
+        "lookup": "Year",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/znxuan/data_viz_vegalite/refs/heads/main/revenue_worldwide.csv"
+          },
+          "key": "Year",
+          "fields": ["Revenue ($ bn)"]
+        }
+      },
+      {
+        "calculate": "datum['value'] / 100 * datum['Revenue ($ bn)']",
+        "as": "Channel Revenue"
+      },
+      {
+        "calculate": "datum['Sales Channel'] == 'Offline' ? 0 : 1",
+        "as": "StackOrder"  
       }
     ],
-    "width": 300,  
+    "width": 400,
     "height": 308,
-    "layer": [
-      {
-        "mark": "bar",
-        "encoding": {
-          "x": { "field": "Year", "type": "nominal" },
-          "y": { "field": "Revenue ($ bn)", "type": "quantitative" },
-          "tooltip": [
-            { "field": "Year", "type": "nominal", "title": "Year" },
-            { "field": "Revenue ($ bn)", "type": "quantitative", "title": "Revenue ($bn)" }
-          ]
-        }
+    "mark": {"type": "bar", "tooltip": true},
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "axis": { "title": "Year" }
       },
-      
-      {
-        "mark": {"type": "rule", "color": "deeppink", "size": 2},
-        "encoding": {
-          "y": {"datum": 500, "type": "quantitative"}  
-        }
+      "y": {
+        "field": "Channel Revenue",
+        "type": "quantitative",
+        "axis": { "title": "Revenue ($ bn)" },
+        "stack": "zero"
       },
-      
-      {
-        "mark": {
-          "type": "text",
-          "align": "left",
-          "baseline": "bottom",
-          "dx": 5,
-          "dy": -5,
-          "color": "deeppink"
-        },
-        "encoding": {
-          "y": {"datum": 500, "type": "quantitative"},
-          "text": {"value": "Revenue: 500"}
-        }
-      }
-    ],
-    "params": [
-      {
-        "name": "startYear",
-        "value": 2014, 
-        "bind": {
-          "input": "range",
-          "min": 2014,
-          "max": 2018, 
-          "step": 1,
-          "name": "Start Year: "
-        }
+      "color": {
+        "field": "Sales Channel",
+        "type": "nominal",
+        "scale": { "range": ["#1f77b4", "#ff7f0e"] },
+        "legend": { "title": "Sales Channel" }
       },
-      {
-        "name": "endYear",
-        "value": 2023,
-        "bind": {
-          "input": "range",
-          "min": 2018, 
-          "max": 2023,
-          "step": 1,
-          "name": "End Year: "
-        }
-      }
-    ]
+      "order": {"field": "StackOrder", "type": "quantitative"},  
+      "tooltip": [
+        { "field": "Year", "type": "ordinal", "title": "Year" },
+        { "field": "Sales Channel", "type": "nominal", "title": "Sales Channel" },
+        { "field": "Channel Revenue", "type": "quantitative", "title": "Revenue ($bn)" },
+        { "field": "Revenue ($ bn)", "type": "quantitative", "title": "Total Revenue ($bn)" }
+      ]
+    }
   }
   
   

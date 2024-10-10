@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Revenue of prestige cosmetics and fragrances market worldwide in 2023",
+  "title": "Revenue of Beauty Industry Worldwide by Year",
   "width": 800,
   "height": 400,
   "projection": {
@@ -48,21 +48,16 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/znxuan/3179hw2/refs/heads/main/filtered_beauty.csv"
+              "url": "https://raw.githubusercontent.com/znxuan/data_viz_vegalite/refs/heads/main/filtered_revenue_years.csv"
             },
             "key": "Country",
-            "fields": ["Revenue in millions(USD)"]
+            "fields": [
+              "2018", "2019", "2020", "2021", "2022", "2023"
+            ]
           }
         },
         {
-          "calculate": "datum['Revenue in millions(USD)'] == 0 || datum['Revenue in millions(USD)'] == null ?  0.0001: datum['Revenue in millions(USD)']",
-          "as": "Revenue in millions(USD)"
-        },
-        {
-          "filter": "datum['Revenue in millions(USD)'] > 0"
-        },
-        {
-          "calculate": "datum['Revenue in millions(USD)']/ 1000",
+          "calculate": "datum[year] == null ? 0 : datum[year]",
           "as": "Revenue in billions(USD)"
         }
       ],
@@ -84,16 +79,24 @@
             "title": "Country"
           },
           {
-            "field": "Revenue in millions(USD)",
-            "type": "quantitative",
-            "title": "Revenue in millions(USD)"
-          },
-          {
             "field": "Revenue in billions(USD)",
             "type": "quantitative",
             "title": "Revenue in billions(USD)"
           }
         ]
+      }
+    }
+  ],
+  "params": [
+    {
+      "name": "year",
+      "value": "2023",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2018", "2019", "2020", "2021", "2022", "2023"
+        ],
+        "name": "Year: "
       }
     }
   ]

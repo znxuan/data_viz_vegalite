@@ -1,8 +1,77 @@
-#choropleth_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+/* Set light beige background for the entire body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f8f3; /* Light beige background */
+    margin: 0;
+    padding: 0;
 }
+
+/* Center the title */
+h1 {
+    text-align: center; /* Center align the title */
+    font-size: 2.5em; /* Increase title size if needed */
+    margin-bottom: 20px;
+}
+
+/* Center the choropleth map */
+#choropleth_map {
+    display: flex;  /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Ensure the map takes full width */
+    height: 500px; /* Keep a consistent height */
+    margin: 0 auto; /* Center the entire element */
+}
+
+/* Style each chart container with white background, padding, and rounded corners */
+.chart-container {
+    background-color: white; /* White background for each chart */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+}
+
+/* Flexbox layout for charts */
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Space-between to remove extra space */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* Flex item with equal width for two charts side by side */
+.flex-item {
+    flex: 1 1 50%; /* 50% width for each item */
+    margin: 0; /* Remove margin to eliminate white space */
+    padding: 0; /* Remove padding */
+}
+
+/* Full width for the choropleth map and other single-chart elements */
+.full-width {
+    width: 100%;
+    margin: 0;
+}
+
+/* Fix the height for all charts to ensure uniformity */
+#bar_chart, #pie_chart, #radar_chart, #container {
+    height: 500px;
+    width: 100%; /* Ensure the charts take full width */
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f1f1f1;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-section {
+    font-size: 16px;
+    color: #333;
+    margin: 20px;
+}
+

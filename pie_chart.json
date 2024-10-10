@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Age Group who purchases beauty products"},
+  "width": 300,    
+  "height": 300,   
+  "data": {
+    "url": "https://raw.githubusercontent.com/znxuan/data_viz_vegalite/refs/heads/main/age_demographic.csv"
+  },
+  "mark": "arc",
+  "encoding": {
+    "theta": {
+      "field": "Percent Usage",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Age Group (Women)",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {"field": "Age Group (Women)", "type": "nominal", "title": "Age Group"},
+      {"field": "Percent Usage", "type": "quantitative", "title": "Percent Usage (%)"}
+    ]
+  },
+  "view": {"stroke": null}
+}
