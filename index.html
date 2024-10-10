@@ -1,20 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-<script src="data_viz.js"></script>
-<title>Global Beauty Industry Revenue </title>
-</head>
-<body>
-<h1>Global Beauty Industry Revenue</h1>
-<div id="bar_chart">
-</div>
-<div id="choropleth_map"></div>
-</body>
-</html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"></script>
+    <script src="data_viz.js"></script>
+    <script src="treemap.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your style.css -->
+    <title>Global Beauty Industry Revenue</title>
+</head>
+
+<body>
+
+    <div class="container"> <!-- White box container -->
+        <h1>Global Beauty Industry Revenue</h1>
+
+        <div class="info-text">
+            An in-depth look at global beauty industry trends, revenue from top manufacturers, sales channels, and consumer demographics.
+        </div>
+
+        <!-- Container for the map and charts -->
+        <div class="chart-container">
+            <div id="choropleth_map" class="full-width"></div>
+            <div class="analysis-section">
+                <p>
+                    In 2023, the US beauty industry reached 98 billion USD, a rise from 86 billion in 2018, showing steady growth. China followed with 67 billion USD, up from 55 billion, driven by increasing online sales.
+
+                    Japan's beauty revenue saw slower growth, from 41 billion USD in 2018 to 47 billion in 2023, indicating a more stable market compared to China.</p>
+            </div>
+            
+        </div>
+
+        <div class="chart-container flex-container">
+            <div id="bar_chart" class="flex-item"></div>
+            <div id="pie_chart" class="flex-item"></div>
+        </div>
+
+        <div class="chart-container flex-container">
+            <div id="radar_chart" class="flex-item"></div>
+            <div id="container" class="flex-item"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2024 Global Beauty Industry Insights. All rights reserved.
+    </div>
+
+</body>
+
+</html>
