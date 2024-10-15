@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Revenue of Beauty Industry Worldwide by Year",
-  "width": 800,
+  "width": 900,
   "height": 400,
   "projection": {
     "type": "equalEarth"
@@ -69,7 +68,11 @@
           "field": "Revenue in billions(USD)",
           "type": "quantitative",
           "scale": {
-            "type": "linear"
+            "domain": [0, 10, 40, 70, 100],  
+            "range": ["#f7e3d0", "#f9b7a2", "#e78b5d", "#c56839"]  
+          },
+          "legend": {
+            "title": "Revenue in billions(USD)"
           }
         },
         "tooltip": [
